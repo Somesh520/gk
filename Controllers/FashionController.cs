@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System;
 
 namespace GKFashionAPI.Controllers
 {
@@ -8,8 +9,9 @@ namespace GKFashionAPI.Controllers
     [ApiController]
     public class FashionController : ControllerBase
     {
-        // Connection String (Tumhari Cloud DB wali)
-        private string connectionString = "Server=gateway01.ap-southeast-1.prod.aws.tidbcloud.com;Port=4000;Database=gkfashion_db;Uid=3nccSBxwtHzCDoP.root;Pwd=W3GgF0y5FTMwcUDm;SslMode=Required;";
+        // Connection String: read from env var `DB_CONNECTION` on Render (fallback to local)
+        private string connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION")
+            ?? "Server=gateway01.ap-southeast-1.prod.aws.tidbcloud.com;Port=4000;Database=gkfashion_db;Uid=3nccSBxwtHzCDoP.root;Pwd=W3GgF0y5FTMwcUDm;SslMode=Required;";
 
         // ✅ NEW: Server Test Endpoint (Database ki zaroorat nahi)
         // URL: http://localhost:xxxx/api/fashion/test
