@@ -1,0 +1,6 @@
+@GKFashionAPI_HostAddress = http://localhost:5081
+
+GET {{GKFashionAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
